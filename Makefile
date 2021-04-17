@@ -1,4 +1,5 @@
 .PHONY: login
+login:
 	docker login --username $(username)
 
 .PHONY: build
