@@ -4,4 +4,4 @@ ARG VERSION
 
 RUN cargo install --version $VERSION fastmod
 
-ENTRYPOINT [ "sh" ]
+ENTRYPOINT [ "fastmod" ]
