@@ -4,7 +4,7 @@ login:
 
 .PHONY: build
 build:
-	docker build --tag $(username)/$(tool):$(version) --build-arg VERSION=$(version) -f $(tool).Dockerfile .
+	docker build --tag $(username)/$(tool):$(version) --build-arg VERSION=$(version) $(tool)/.
 
 .PHONY: push
 push: build
