@@ -4,4 +4,4 @@ ARG VERSION
 
 RUN npm install -g jscodeshift@$VERSION
 
-ENTRYPOINT ["sh"]
+ENTRYPOINT ["jscodeshift"]
