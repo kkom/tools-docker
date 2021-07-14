@@ -10,4 +10,4 @@ jobs:
         id: get_latest_jscodeshift_version
         run: echo "::set-output name=latest_jscodeshift_version::$(npm show jscodeshift version)"
       - name: Print latest jscodeshift version
-        run: echo "{{steps.get_latest_jscodeshift_version.outputs.latest_jscodeshift_version}}"
+        run: echo "${{steps.get_latest_jscodeshift_version.outputs.latest_jscodeshift_version}}"
