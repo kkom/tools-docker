@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get latest jscodeshift version
-        id: get_latest_jscodeshift_version
+        id: check_npm
         run: echo "::set-output name=latest_jscodeshift_version::$(npm show jscodeshift version)"
       - name: Print latest jscodeshift version
-        run: echo "${{steps.get_latest_jscodeshift_version.outputs.latest_jscodeshift_version}}"
+        run: echo "${{steps.check_npm.outputs.latest_jscodeshift_version}}"
