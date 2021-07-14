@@ -6,10 +6,5 @@ jobs:
   push-jscodeshift:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: npm
       - name: Show latest jscodeshift version
         run: npm show jscodeshift version
