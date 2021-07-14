@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '20 23 * * *'
+    - cron:  '24 23 * * *'
 jobs:
   push-jscodeshift:
     runs-on: ubuntu-latest
