@@ -4,10 +4,20 @@ on:
   workflow_dispatch:
 jobs:
   push-jscodeshift:
+    environment: kkom
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest jscodeshift version
+      - name: Check the latest version of jscodeshift in npm
         id: check_npm
         run: echo "::set-output name=latest_jscodeshift_version::$(npm show jscodeshift version)"
-      - name: Print latest jscodeshift version
+      - name: Print latest jscodeshift version in npm
         run: echo "${{steps.check_npm.outputs.latest_jscodeshift_version}}"
+      - name: Check the latest version of jscodeshift in Docker Hub
+        id: check_docker_hub
+        run: |
+          VERSION=$(docker run --pull always $DOCKER_USERNAME/jscodeshift:latest --version 2>&1 | grep '^jscodeshift: ' | cut -d ':' -f 2 | xargs) && \
+          echo "::set-output name=latest_jscodeshift_version::$VERSION"
+        env:
+          DOCKER_USERNAME: ${{ secrets.docker_username }}
+      - name: Print latest jscodeshift version in Docker Hub
+        run: echo "${{steps.check_docker_hub.outputs.latest_jscodeshift_version}}"
