@@ -14,6 +14,6 @@ jobs:
         run: echo "${{steps.check_npm.outputs.latest_jscodeshift_version}}"
       - name: Check the latest version of jscodeshift in Docker Hub
         id: check_docker_hub
-        run: docker run --pull always $DOCKER_USERNAME/jscodeshift:latest --version
+        run: echo "::set-output name=latest_jscodeshift_version::$(docker run --pull always $DOCKER_USERNAME/jscodeshift:latest --version 2>&1 | grep '^jscodeshift: ' | cut -d ':' -f 2 | xargs)"
         env:
           DOCKER_USERNAME: ${{ secrets.docker_username }}
