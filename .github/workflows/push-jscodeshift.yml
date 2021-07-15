@@ -10,7 +10,7 @@ jobs:
       - name: Check the latest version of jscodeshift in npm
         id: check_npm
         run: echo "::set-output name=latest_jscodeshift_version::$(npm show jscodeshift version)"
-      - name: Print latest jscodeshift version
+      - name: Print latest jscodeshift version in npm
         run: echo "${{steps.check_npm.outputs.latest_jscodeshift_version}}"
       - name: Check the latest version of jscodeshift in Docker Hub
         id: check_docker_hub
@@ -19,3 +19,5 @@ jobs:
           echo "::set-output name=latest_jscodeshift_version::$VERSION"
         env:
           DOCKER_USERNAME: ${{ secrets.docker_username }}
+      - name: Print latest jscodeshift version in Docker Hub
+        run: echo "${{steps.check_docker_hub.outputs.latest_jscodeshift_version}}"
