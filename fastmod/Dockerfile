@@ -1,4 +1,4 @@
-FROM rust:1.53.0-slim
+FROM rust:1.66.0-slim
 
 ARG VERSION
 
